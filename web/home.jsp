@@ -71,20 +71,29 @@
         <div id="banner-box">
             <img src="image/banner.jpg" alt="banner">
         </div>
-            <div class="col-sm-9">
+            <div class="container">
+                <div class="col-sm-9">
                 <div class="row">
+                    <h1>Inshowing movies: </h1><!-- comment -->
                     <c:forEach items="${sessionScope.listM}" var="o">
-                        <div class="col-12,col-md-6,col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img class="card-img-top" src="${o.image}" alt="image cap" height="150"><!-- comment -->
+                                <img class="card-img-top" src="${o.image}" alt="Card image cap" height="150">
                                 <div class="card-body">
-                                    <h4 class="card-title show-txt"><a href="#" title="View movies">${o.name}</a></h4>
+                                    <h4 class="card-title">${o.name}</h4>
+                                    <a href="#" class="btn btn-outline-warning button" style="float:left">Detail</a>
+                                    <a href="#" class="btn button"> Buy ticket</a>  
                                 </div>
                             </div>
                         </div>
                     </c:forEach>
                 </div>
-            </div>           
+            </div>
+            
+            
+                    
+            </div>
+    
         <jsp:include page="footer.jsp"/> 
         
        

@@ -47,7 +47,7 @@
     </head>
     <body>
         <div class="accountmanage">
-            <button class="button">Log out</button>
+            <a href="MovieControl"><button class="button">Log out</button></a>
             </div><!-- comment -->
         <header>
             <div class="logobox">

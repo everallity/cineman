@@ -13,10 +13,6 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet>
-        <servlet-name>LoginControl</servlet-name>
-        <servlet-class>Controller.LoginControl</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>MovieController</servlet-name>
         <servlet-class>Controller.MovieController</servlet-class>
     </servlet>
@@ -28,13 +24,13 @@
         <servlet-name>MovieControl</servlet-name>
         <servlet-class>Controller.MovieControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginControl</servlet-name>
+        <servlet-class>Controller.LoginControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginControl</servlet-name>
-        <url-pattern>/LoginControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MovieController</servlet-name>
@@ -47,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>MovieControl</servlet-name>
         <url-pattern>/MovieControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginControl</servlet-name>
+        <url-pattern>/LoginControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

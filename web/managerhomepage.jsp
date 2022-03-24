@@ -47,8 +47,8 @@
     </head>
     <body>
         <div class="accountmanage">
-            <button class="button">Log in</button>
-            <button class="button">Sign up</button>
+            <a href="MovieControl"><button class="button">Log out</button></a>
+            <a href="clientstat.jsp"><button class="button">View Statistic</button></a>
             </div><!-- comment -->
         <header>
             <div class="logobox">
