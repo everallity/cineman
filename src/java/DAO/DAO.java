@@ -12,10 +12,10 @@ import java.sql.DriverManager;
  * @author Admin
  */
 public class DAO {
-    private Connection con;
+    public static Connection con;
     public DAO() throws ClassNotFoundException{
         if(con==null){
-            String dbUrl ="jdbc:mysql://localhost:3306/cineman";
+            String dbUrl ="jdbc:mysql://localhost:3306/cineman?autoReconnect=true&useSSL=false";
             String dbClass = "com.mysql.cj.jdbc.Driver";
             try{
                 Class.forName(dbClass);
@@ -31,7 +31,7 @@ public class DAO {
             
                 Class.forName(dbClass);
                 return DriverManager.getConnection(dbUrl,"root","Abcd1234");
-
+                
             
     }
 }

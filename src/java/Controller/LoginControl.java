@@ -4,9 +4,9 @@
  */
 package Controller;
 
+import DAO.StaffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +27,26 @@ public class LoginControl extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try{
+           String user=request.getParameter("username");
+           String pass=request.getParameter("password");
+           
+           StaffDAO sd= new StaffDAO();
+           boolean res=sd.checkLogin(user,pass);
+           System.out.println(user+pass);
+           if(res==false){
+               response.sendRedirect("login.jsp");
+           }
+           else{
+               response.sendRedirect("managerhomepage.jsp");
+           }
+       }catch(Exception e){
+           e.printStackTrace();
+       }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -40,13 +60,12 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
-        dispatcher.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *simple registration form in html code
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -55,8 +74,7 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username=request.getParameter("username");
-        String password=request.getParameter("password");
+        processRequest(request, response);
     }
 
     /**

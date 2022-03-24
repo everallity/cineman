@@ -16,27 +16,30 @@ import java.util.List;
  *
  * @author Admin
  */
-public class MovieDAO {
-    private DAO d;
-    private Connection con;
+public class MovieDAO extends DAO {
+    //private DAO d;
+    //private Connection con;
+    public MovieDAO()throws ClassNotFoundException{
+        super();
+    }
     private PreparedStatement ps;
     private ResultSet rs;
     public List<Movie> getMovieList(){
         List<Movie> list=new ArrayList<Movie>();
         try{
             //b1:query
-            String query="select * from movie";
+         /*   
             //b2:
           //  con=dao.getConnection();
             String dbUrl="jdbc:mysql://localhost:3306/cineman";
-        String dbClass="com.mysql.cj.jdbc.Driver";
+            String dbClass="com.mysql.cj.jdbc.Driver";
         try{
             Class.forName(dbClass);
             con=DriverManager.getConnection (dbUrl,"root","Abcd1234");
         }catch(Exception e){
             e.printStackTrace();
-        }
-            
+        }*/
+            String query="select * from movie";
             ps=con.prepareStatement(query);
             rs=ps.executeQuery();
             while(rs.next()){
@@ -58,12 +61,12 @@ public class MovieDAO {
         }
         return list;
     }
-    public static void main(String[] args){
+    public static void main(String[] args) throws ClassNotFoundException{
         List<Movie> list=new ArrayList<Movie>();
-        MovieDAO dao=new MovieDAO();
-        list=dao.getMovieList();
+        MovieDAO md=new MovieDAO();
+        list=md.getMovieList();
         for(Movie i:list){
-            System.out.println(i.getName()+i.getTrailer());
+            System.out.println(i.getName()+i.getTrailer()+i.getImage());
         }
     }
 }
