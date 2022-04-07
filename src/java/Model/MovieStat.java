@@ -9,26 +9,25 @@ package Model;
  * @author Admin
  */
 public class MovieStat {
-    private Movie m;
+    private String name;
     private float revenue;
-    private String rating;
+    private int movieid;
 
-    public MovieStat(Movie m) {
-        this.m = m;
+    public MovieStat() {
     }
 
-    public MovieStat(Movie m, float revenue, String rating) {
-        this.m = m;
+    public MovieStat(String name, float revenue, int movieid) {
+        this.name = name;
         this.revenue = revenue;
-        this.rating = rating;
+        this.movieid = movieid;
     }
 
-    public Movie getM() {
-        return m;
+    public String getName() {
+        return name;
     }
 
-    public void setM(Movie m) {
-        this.m = m;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public float getRevenue() {
@@ -39,13 +38,15 @@ public class MovieStat {
         this.revenue = revenue;
     }
 
-    public String getRating() {
-        return rating;
+    public int getMovieid() {
+        return movieid;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setMovieid(int movieid) {
+        this.movieid = movieid;
     }
+
+    
     
     
     

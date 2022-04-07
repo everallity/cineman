@@ -12,10 +12,26 @@ import java.io.Serializable;
  */
 public class ClientStat implements Serializable{
     private int clientid;
+    private String name;
+
+    public ClientStat(int clientid, String name, int numoftrans, float totalsum) {
+        this.clientid = clientid;
+        this.name = name;
+        this.numoftrans = numoftrans;
+        this.totalsum = totalsum;
+    }
     private int numoftrans;
     private float totalsum;
 
     public ClientStat() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ClientStat(int clientid, int numoftrans, float totalsum) {
@@ -23,7 +39,6 @@ public class ClientStat implements Serializable{
         this.numoftrans = numoftrans;
         this.totalsum = totalsum;
     }
-
     public int getClientid() {
         return clientid;
     }

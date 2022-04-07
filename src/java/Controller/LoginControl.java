@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import DAO.PersonDAO;
 import DAO.StaffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,12 +35,27 @@ public class LoginControl extends HttpServlet {
         try{
            String user=request.getParameter("username");
            String pass=request.getParameter("password");
-           
+           PersonDAO pd=new PersonDAO();
            StaffDAO sd= new StaffDAO();
+           int res1=pd.checkLogin(user, pass);
            boolean res=sd.checkLogin(user,pass);
            System.out.println(user+pass);
+           
+            
            if(res==false){
-               response.sendRedirect("login.jsp");
+               {
+                   if(res1==0){
+                        response.sendRedirect("login.jsp");
+                   }
+                   else
+                   {
+                      HttpSession session=request.getSession();
+                      session.setAttribute("clientid", res1);
+                      // request.getRequestDispatcher("clienthomepage.jsp").forward(request, response);
+                       response.sendRedirect("clienthomepage.jsp");
+                   }
+                       
+               }  
            }
            else{
                response.sendRedirect("managerhomepage.jsp");

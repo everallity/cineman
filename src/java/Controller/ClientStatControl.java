@@ -4,16 +4,14 @@
  */
 package Controller;
 
-import DAO.MovieDAO;
-import Model.Movie;
+import DAO.ClientStatDAO;
+import Model.ClientStat;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class MovieControl extends HttpServlet {
+public class ClientStatControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,28 +33,26 @@ public class MovieControl extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException {
+            throws ServletException, IOException, ClassNotFoundException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        
-            /* TODO output your page here. You may use following sample code. */
-            
-            HttpSession session = request.getSession();
-        
-        
-        
-        List<Movie> list=new ArrayList<Movie>();
-        MovieDAO md=new MovieDAO();
-        list=md.getMovieList();
-        if(list.size()==0)
+        String startdate=request.getParameter("startdate");
+        String enddate=request.getParameter("enddate");
+       
+        System.out.println(startdate);
+        System.out.println(enddate);
+        ClientStatDAO csd=new ClientStatDAO();
+        ArrayList<ClientStat> list=new ArrayList<ClientStat>();
+        list=csd.getClientStatList(startdate, enddate);
+        if(list.size()==0){
             System.out.println("ko co");
-        for(Movie i:list){
-            System.out.println(i.getName()+i.getTrailer());
         }
-        session.setAttribute("listM", list);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
-        
-//    
-//        request.setAttribute("listC", list1);
+        for(ClientStat c:list){
+            System.out.println(c.getClientid()+" "+c.getTotalsum());
+        }
+        HttpSession session=request.getSession();
+        session.setAttribute("listC", list);
+        response.sendRedirect("clientstats.jsp");
+        //request.getRequestDispatcher("clientstats.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,7 +63,6 @@ public class MovieControl extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.lang.ClassNotFoundException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -75,7 +70,9 @@ public class MovieControl extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MovieControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientStatControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ClientStatControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +90,9 @@ public class MovieControl extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MovieControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientStatControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ClientStatControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

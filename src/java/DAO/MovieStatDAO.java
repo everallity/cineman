@@ -4,41 +4,38 @@
  */
 package DAO;
 
-import Model.ClientStat;
-import Model.Movie;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import static DAO.DAO.con;
+import Model.MovieStat;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 /**
  *
  * @author Admin
  */
-public class ClientStatDAO extends DAO {
-    //private DAO d;
-    //private Connection con;
-    public ClientStatDAO() throws ClassNotFoundException{
-        super();
+public class MovieStatDAO extends DAO {
+    public MovieStatDAO() throws ClassNotFoundException{
+        super();              
     }
     private PreparedStatement ps;
     private ResultSet rs;
-    public ArrayList<ClientStat> getClientStatList(String start,String end)throws ParseException{
-        ArrayList<ClientStat> list=new ArrayList<ClientStat>();
+    public ArrayList<MovieStat> getMovieStatList(String start,String end) throws ParseException{
+        ArrayList<MovieStat> list=new ArrayList<MovieStat>();
         SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
         Date startdate=format.parse(start);
         Date enddate=format.parse(end);
         java.sql.Date sqlstart=new java.sql.Date(startdate.getTime());
         java.sql.Date sqlend= new java.sql.Date(enddate.getTime());
-        String query="select c.id,c.name,SUM(b.amount)\n"
-                    +"from client c\n"
-                    +"left join bill b on c.id=b.clientid\n"
-                    +"Where date between ? and ?\n"
-                    +"group by c.name\n"
+        String query="select m.id,m.name,SUM(b.amount)\n"
+                    +"from movie m\n"
+                    +"left join ticket t on m.id=t.movieid\n"
+                    +"left join bill b on t.id=b.ticketid\n"
+                    +"Where b.date between ? and ?\n"
+                    +"group by m.name\n"
                     +"order by b.amount desc";
         try{
             //b1:query
@@ -60,12 +57,11 @@ public class ClientStatDAO extends DAO {
             ps.setDate(2, sqlend);
             rs=ps.executeQuery();
             while(rs.next()){
-                ClientStat s=new ClientStat();
-                s.setClientid(rs.getInt("id"));
-                s.setName(rs.getString("name"));
-                s.setNumoftrans(rs.getInt("id"));
-                s.setTotalsum(rs.getFloat("Sum(b.amount)"));
-                list.add(s);
+                MovieStat m=new MovieStat();
+                m.setMovieid(rs.getInt("id"));
+                m.setName(rs.getString("name"));
+                m.setRevenue(rs.getFloat("Sum(b.amount)"));
+                list.add(m);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -73,12 +69,11 @@ public class ClientStatDAO extends DAO {
         return list;
     }
     public static void main(String[] args) throws ClassNotFoundException, ParseException {
-        ArrayList<ClientStat> list=new ArrayList<ClientStat>();
-        ClientStatDAO csd=new ClientStatDAO();
-        list=csd.getClientStatList("20220403", "20220406");
-        for(ClientStat c:list){
-            System.out.println(c.getClientid()+" "+c.getTotalsum());
+        ArrayList<MovieStat> list=new ArrayList<MovieStat>();
+        MovieStatDAO mvd=new MovieStatDAO();
+        list=mvd.getMovieStatList("20220403", "20220406");
+        for(MovieStat m:list){
+            System.out.println(m.getName()+" "+m.getRevenue());
         }
     }
-  
 }

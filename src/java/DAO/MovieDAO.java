@@ -24,6 +24,31 @@ public class MovieDAO extends DAO {
     }
     private PreparedStatement ps;
     private ResultSet rs;
+    public Movie getMoviebyID(String movieid){
+        Movie m= new Movie();
+        try{
+            String query="select * from movie where id=?";
+            ps=con.prepareStatement(query);
+            ps.setString(1, movieid);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                m.setId(rs.getInt("id"));
+                m.setName(rs.getString(2));
+                m.setDirect(rs.getString(3));
+                m.setAct(rs.getString(4));
+                m.setGenre(rs.getString(5));
+                m.setLanguage(rs.getString(6));
+                m.setRated(rs.getString(7));
+                m.setDuration(rs.getString(8));
+                m.setPremiere(rs.getString(9));
+                m.setTrailer(rs.getString(10));
+                m.setImage(rs.getString(11));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return m;
+    }
     public List<Movie> getMovieList(){
         List<Movie> list=new ArrayList<Movie>();
         try{
@@ -44,6 +69,7 @@ public class MovieDAO extends DAO {
             rs=ps.executeQuery();
             while(rs.next()){
                 Movie m=new Movie();
+                m.setId(rs.getInt("id"));
                 m.setName(rs.getString(2));
                 m.setDirect(rs.getString(3));
                 m.setAct(rs.getString(4));

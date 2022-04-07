@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class Movie implements Serializable {
     String name,direct,act,genre,language,rated,duration,premiere,trailer,image;
-
+    int id;
     public Movie() {
     }
 
@@ -22,6 +22,28 @@ public class Movie implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Movie(String name, String direct, String act, String genre, String language, String rated, String duration, String premiere, String trailer, String image, int id) {
+        this.name = name;
+        this.direct = direct;
+        this.act = act;
+        this.genre = genre;
+        this.language = language;
+        this.rated = rated;
+        this.duration = duration;
+        this.premiere = premiere;
+        this.trailer = trailer;
+        this.image = image;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

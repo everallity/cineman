@@ -9,19 +9,18 @@ package Model;
  * @author Admin
  */
 public class Ticket {
-    private String seat,showtime;
+    private String movieid,seat,showtime,showroom;
     private float price;
-    private Movie m;
 
-    public Ticket(Movie m) {
-        this.m = m;
+    public Ticket() {
     }
 
-    public Ticket(String seat, String showtime, float price, Movie m) {
-        this.seat = seat;
-        this.showtime = showtime;
-        this.price = price;
-        this.m = m;
+    public String getMovieid() {
+        return movieid;
+    }
+
+    public void setMovieid(String movieid) {
+        this.movieid = movieid;
     }
 
     public String getSeat() {
@@ -40,6 +39,14 @@ public class Ticket {
         this.showtime = showtime;
     }
 
+    public String getShowroom() {
+        return showroom;
+    }
+
+    public void setShowroom(String showroom) {
+        this.showroom = showroom;
+    }
+
     public float getPrice() {
         return price;
     }
@@ -48,12 +55,13 @@ public class Ticket {
         this.price = price;
     }
 
-    public Movie getM() {
-        return m;
+    public Ticket(String movieid, String seat, String showtime, String showroom, float price) {
+        this.movieid = movieid;
+        this.seat = seat;
+        this.showtime = showtime;
+        this.showroom = showroom;
+        this.price = price;
     }
 
-    public void setM(Movie m) {
-        this.m = m;
-    }
     
 }
