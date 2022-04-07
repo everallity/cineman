@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Netbeans%20Projects/Cineman/web/css/navbar.css</file>
-            <file>file:/D:/Netbeans%20Projects/Cineman/web/css/tablecss.css</file>
-            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/Controller/WebLink.java</file>
-            <file>file:/D:/Netbeans%20Projects/Cineman/web/clientstat.jsp</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/Model/Bill.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/DAO/TicketDAO.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/web/selectdate.jsp</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/Controller/MovieStatControl.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/DAO/SeatDAO.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/Controller/ShowTimeControl.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/Controller/BookingControl.java</file>
         </group>
     </open-files>
 </project-private>
