@@ -1,16 +1,17 @@
 <%-- 
-    Document   : home
-    Created on : Mar 23, 2022, 3:20:35 PM
+    Document   : clientstat
+    Created on : Mar 21, 2022, 10:31:45 PM
     Author     : Admin
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-    <style>
+        <style>
             .content-table{
                 border-collapse:collapse;
                 margin:25px 0;
@@ -37,22 +38,6 @@
                 border-bottom: 2px solid #FAE4C4
             }
         </style>
-        <script>
-            function GetURLParameter(sParam)
-            {
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
-        {
-            return sParameterName[1];
-        }
-    }
-}​
-           
-        </script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -62,8 +47,7 @@
     </head>
     <body>
         <div class="accountmanage">
-            <a href="login.jsp"><button class="button">Log in</button></a>
-            <a href="selectdate.jsp"><button class="button">Sign up</button></a>
+            <a href="MovieControl"><button class="button">Log out</button></a>
             </div><!-- comment -->
         <header>
             <div class="logobox">
@@ -83,34 +67,54 @@
             </ul>
             </nav>
         </div>
-        <div id="banner-box">
+            <div id="banner-box">
             <img src="image/banner.jpg" alt="banner">
         </div>
-            <div class="container">
-                <div class="col-sm-9">
-                <div class="row">
-                    <h1>Inshowing movies: </h1><!-- comment -->
-                    <c:forEach items="${sessionScope.listM}" var="o">
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <img class="card-img-top" src="${o.image}" alt="Card image cap" height="150">
-                                <div class="card-body">
-                                    <h4 class="card-title">${o.name}</h4>
-                                    <a href="#" class="btn btn-outline-warning button" style="float:left">Detail</a>
-                                    <button class="button" onclick="location.href='ShowDateControl?movieid=${o.id}">Buy ticket</button>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
-            
-            
-                    
-            </div>
-    
-        <jsp:include page="footer.jsp"/> 
+        <div class="content-box">
+        <h3>Select a time period:</h3>
+        </div>   
+        <div class="content-box-inline">
+            <form action="ClientStatControl" method="post" class="form-inline my-2 my-lg-0">
+            <div class="form-group">
+            <label>Start date</label>
+            <input name="startdate" type="text" class="form-control" required>
+            <button class="fa fa-calendar" style="font-size:20px;color:red"></button>
+        </div>
+        <div class="form-group">
+            <label>End date</label>
+            <input name="enddate" type="text" class="form-control" required>
+            <button class="fa fa-calendar" style="font-size:20px;color:red"></button>
+        </div>
+
+        <input type="submit" class="button" value="View">
+                    </form>
+        </div>
+        <div class="content-box">
+        <h3>Clients Statistic</h3>
+        <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ClientID</th>
+                            <th>Name</th>
+                            <th>Total Amount</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${sessionScope.listC}" var="c">
+                            <tr>
+                                <td>${c.clientid}</td>
+                                <td>${c.name}</td>
+                                <td>${c.totalsum}</td>
+                                <td class="text-right"><button class="btn  btn-success" onclick="location.href = 'ClientDetailControl?clientid=${c.clientid}'" type ="button">View Details</button> </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+        </div>
         
-       
+            <jsp:include page="footer.jsp"/>
+        
+       <script src="js/manager.js" type="text/javascript"></script>
     </body>
 </html>

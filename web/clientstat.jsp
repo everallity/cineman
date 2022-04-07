@@ -67,52 +67,34 @@
             </ul>
             </nav>
         </div>
-        <div class="content-box">
-        <h3>Select a time period:</h3>
-        </div>   
-        <div class="content-box-inline">
-            <ul class="datepicker">
-                <li><h4>Start:</h4></li>
-                <li><div class="text-box">dfdf</div></li>
-                <li><button class="fa fa-calendar" style="font-size:20px;color:red"></button> </li>
-                <li><h4>End:</h4></li>
-                <li><div class="text-box">dsds</div></li>
-                <li><button class="fa fa-calendar" style="font-size:20px;color:red"></button> </li>
-            </ul>
+        </div>
+            <div id="banner-box">
+            <img src="image/banner.jpg" alt="banner">
         </div>
         <div class="content-box">
-        <h3>Customer</h3>
-        <table class="content-table">
-            <thead>
-                <tr>
-                    <th>ClientID</th>
-                    <th>Name</th>
-                    <th>Number of transactions</th>
-                    <th>Total Sum</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>BillID</th>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Note</th>
-                </tr>
-                <tr>
-                    <th>BillID</th>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Note</th>
-                </tr>
-                <tr>
-                    <th>BillID</th>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Note</th>
-                </tr>
-            </tbody>   
-                
-        </table>
+            <h3>Client Details:</h3> 
+            <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ClientID</th>
+                            <th>TicketID</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${sessionScope.listB}" var="o">
+                            <tr>
+                                <td>${o.clientid}</td>
+                                <td>${o.ticketid}</td>
+                                <td>${o.amount}</td>  
+                                <td>${o.date}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+        
         
         </div>
         

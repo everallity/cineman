@@ -47,8 +47,8 @@
     </head>
     <body>
         <div class="accountmanage">
-            <a href="MovieControl"><button class="button">Log out</button></a>
-            <a href="clientstat.jsp"><button class="button">View Statistic</button></a>
+            <a href="LogoutControl"><button class="button">Log out</button></a>
+            <a href="managepage.jsp"><button class="button">Manage</button></a>
             </div><!-- comment -->
         <header>
             <div class="logobox">

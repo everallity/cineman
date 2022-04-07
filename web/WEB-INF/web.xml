@@ -13,14 +13,6 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet>
-        <servlet-name>MovieController</servlet-name>
-        <servlet-class>Controller.MovieController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ClientStatController</servlet-name>
-        <servlet-class>Controller.ClientStatController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>MovieControl</servlet-name>
         <servlet-class>Controller.MovieControl</servlet-class>
     </servlet>
@@ -28,17 +20,41 @@
         <servlet-name>LoginControl</servlet-name>
         <servlet-class>Controller.LoginControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClientStatControl</servlet-name>
+        <servlet-class>Controller.ClientStatControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientDetailControl</servlet-name>
+        <servlet-class>Controller.ClientDetailControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieStatControl</servlet-name>
+        <servlet-class>Controller.MovieStatControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieDetailControl</servlet-name>
+        <servlet-class>Controller.MovieDetailControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutControl</servlet-name>
+        <servlet-class>Controller.LogoutControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowTimeControl</servlet-name>
+        <servlet-class>Controller.ShowTimeControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowDateControl</servlet-name>
+        <servlet-class>Controller.ShowDateControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookingControl</servlet-name>
+        <servlet-class>Controller.BookingControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>MovieController</servlet-name>
-        <url-pattern>/MovieController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ClientStatController</servlet-name>
-        <url-pattern>/ClientStatController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MovieControl</servlet-name>
@@ -47,6 +63,38 @@
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientStatControl</servlet-name>
+        <url-pattern>/ClientStatControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientDetailControl</servlet-name>
+        <url-pattern>/ClientDetailControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieStatControl</servlet-name>
+        <url-pattern>/MovieStatControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieDetailControl</servlet-name>
+        <url-pattern>/MovieDetailControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutControl</servlet-name>
+        <url-pattern>/LogoutControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowTimeControl</servlet-name>
+        <url-pattern>/ShowTimeControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowDateControl</servlet-name>
+        <url-pattern>/ShowDateControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingControl</servlet-name>
+        <url-pattern>/BookingControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
