@@ -1,8 +1,9 @@
 <%-- 
-    Document   : home
-    Created on : Mar 23, 2022, 3:20:35 PM
+    Document   : clienthomepage
+    Created on : Apr 6, 2022, 5:10:51 PM
     Author     : Admin
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -62,8 +63,7 @@
     </head>
     <body>
         <div class="accountmanage">
-            <a href="login.jsp"><button class="button">Log in</button></a>
-            <a href="selectdate.jsp"><button class="button">Sign up</button></a>
+            <a href="LogoutControl"><button class="button">Log out</button></a>
             </div><!-- comment -->
         <header>
             <div class="logobox">
@@ -97,7 +97,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">${o.name}</h4>
                                     <a href="#" class="btn btn-outline-warning button" style="float:left">Detail</a>
-                                    <button class="button" onclick="location.href='ShowDateControl?movieid=${o.id}">Buy ticket</button>
+                                    <button class="button" onclick="location.href='ShowDateControl?movieid=${o.id}'">Buy ticket</button>
                                 </div>
                             </div>
                         </div>
@@ -114,3 +114,4 @@
        
     </body>
 </html>
+
