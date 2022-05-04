@@ -31,7 +31,6 @@ public class TicketDAO extends DAO {
     }
     public void updateTicket(int movieid,String seat,String showtime){
         String sql = "insert into ticket (movieid,seat,showtime,showroom,price) values(?,?,?,1,200000)";
-       
         try{
             PreparedStatement ps =con.prepareStatement(sql);
             ps.setInt(1, movieid);
