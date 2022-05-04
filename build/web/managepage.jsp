@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>ManagePage</title>
     </head>
     <body>
        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='moviestats.jsp'">View Movies Statistic</button>
