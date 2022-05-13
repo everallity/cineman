@@ -29,11 +29,20 @@ public class ClientStatDAO extends DAO {
     private ResultSet rs;
     public ArrayList<ClientStat> getClientStatList(String start,String end)throws ParseException{
         ArrayList<ClientStat> list=new ArrayList<ClientStat>();
-        SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
-        Date startdate=format.parse(start);
-        Date enddate=format.parse(end);
-        java.sql.Date sqlstart=new java.sql.Date(startdate.getTime());
-        java.sql.Date sqlend= new java.sql.Date(enddate.getTime());
+        java.sql.Date sqlend;
+        java.sql.Date sqlstart;
+        try{
+            SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
+            Date startdate=format.parse(start);
+            Date enddate=format.parse(end);
+            sqlstart=new java.sql.Date(startdate.getTime());
+            sqlend= new java.sql.Date(enddate.getTime());
+        }catch(ParseException e){
+            e.printStackTrace();
+            return null;
+        }
+        
+        
         String query="select c.id,c.name,SUM(b.amount)\n"
                     +"from client c\n"
                     +"left join bill b on c.id=b.clientid\n"
@@ -69,6 +78,7 @@ public class ClientStatDAO extends DAO {
             }
         }catch(Exception e){
             e.printStackTrace();
+            return null;
         }
         return list;
     }

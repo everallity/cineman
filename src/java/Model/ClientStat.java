@@ -13,7 +13,11 @@ import java.io.Serializable;
 public class ClientStat implements Serializable{
     private int clientid;
     private String name;
-
+    public ClientStat(int clientid,String name,float totalsum){
+        this.clientid=clientid;
+        this.name=name;
+        this.totalsum=totalsum;
+    }
     public ClientStat(int clientid, String name, int numoftrans, float totalsum) {
         this.clientid = clientid;
         this.name = name;

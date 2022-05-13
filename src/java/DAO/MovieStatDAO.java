@@ -25,11 +25,20 @@ public class MovieStatDAO extends DAO {
     private ResultSet rs;
     public ArrayList<MovieStat> getMovieStatList(String start,String end) throws ParseException{
         ArrayList<MovieStat> list=new ArrayList<MovieStat>();
-        SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
+        java.sql.Date sqlstart;
+        java.sql.Date sqlend;
+        try{
+            SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
         Date startdate=format.parse(start);
         Date enddate=format.parse(end);
-        java.sql.Date sqlstart=new java.sql.Date(startdate.getTime());
-        java.sql.Date sqlend= new java.sql.Date(enddate.getTime());
+        sqlstart=new java.sql.Date(startdate.getTime());
+        sqlend= new java.sql.Date(enddate.getTime());
+        }catch(ParseException e){
+            e.printStackTrace();
+            return null;
+        }
+        
+        
         String query="select m.id,m.name,SUM(b.amount)\n"
                     +"from movie m\n"
                     +"left join ticket t on m.id=t.movieid\n"
