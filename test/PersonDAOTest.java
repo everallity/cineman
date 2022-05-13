@@ -36,6 +36,15 @@ public class PersonDAOTest {
         actual=pd.checkLogin("duc", "123");
         Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void checkLogin_noinput() throws ClassNotFoundException{
+        final int expected=0;
+        final int actual;
+        PersonDAO pd=new PersonDAO();
+        actual=pd.checkLogin("","");
+        Assert.assertEquals(expected, actual);
+        
+    }
     @BeforeClass
     public static void setUpClass() {
     }

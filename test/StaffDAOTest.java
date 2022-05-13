@@ -36,6 +36,14 @@ public class StaffDAOTest {
         actual=sd.checkLogin("trong","123");
         Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void checkLogin_noinput() throws ClassNotFoundException{
+        final boolean expected=false;
+        final boolean actual;
+        StaffDAO sd=new StaffDAO();
+        actual=sd.checkLogin("", "");
+        Assert.assertEquals(expected, actual);
+    }
     @BeforeClass
     public static void setUpClass() {
     }
