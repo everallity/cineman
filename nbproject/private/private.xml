@@ -3,14 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Netbeans%20Projects/Cineman/web/login.jsp</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/test/PersonDAOTest.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/DAO/BillDAO.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/test/StaffDAOTest.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/src/java/Model/ShowRoom.java</file>
             <file>file:/D:/Netbeans%20Projects/Cineman/src/java/DAO/TicketDAO.java</file>
-            <file>file:/D:/Netbeans%20Projects/Cineman/web/selectdate.jsp</file>
-            <file>file:/D:/Netbeans%20Projects/Cineman/web/demo.jsp</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/test/MovieDAOTest.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/test/BillDAOTest.java</file>
             <file>file:/D:/Netbeans%20Projects/Cineman/src/java/DAO/MovieStatDAO.java</file>
             <file>file:/D:/Netbeans%20Projects/Cineman/test/TicketDAOTest.java</file>
-            <file>file:/D:/Netbeans%20Projects/Cineman/web/demohome.jsp</file>
             <file>file:/D:/Netbeans%20Projects/Cineman/src/java/DAO/ClientStatDAO.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/test/MovieStatDAOTest.java</file>
+            <file>file:/D:/Netbeans%20Projects/Cineman/test/ClientStatDAOTest.java</file>
         </group>
     </open-files>
 </project-private>
